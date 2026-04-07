@@ -1,4 +1,3 @@
-```markdown
 # Desafio MBA Engenharia de Software com IA - Full Cycle
 
 Este projeto implementa um pipeline RAG (Retrieval-Augmented Generation) para processar um arquivo PDF, armazenar suas informações de forma vetorial e permitir buscas contextuais via linha de comando (CLI). A solução garante que as respostas geradas sejam baseadas estritamente no conteúdo do documento fornecido.
@@ -41,7 +40,7 @@ Para rodar este projeto localmente, você precisará ter instalado:
 Clone o repositório e acesse a pasta raiz do projeto:
 
 ```bash
-git clone [https://github.com/rprando/mba-ia-desafio-ingestao-busca.git](https://github.com/rprando/mba-ia-desafio-ingestao-busca.git)
+git clone https://github.com/rprando/mba-ia-desafio-ingestao-busca.git
 cd mba-ia-desafio-ingestao-busca
 ```
 
@@ -106,4 +105,3 @@ Com os dados vetorizados, inicie o chat interativo no terminal:
 python src/chat.py
 ```
 *O assistente responderá às suas perguntas baseando-se unicamente nas informações contidas no PDF. Para encerrar o chat, basta digitar `sair` ou `exit`.*
-```

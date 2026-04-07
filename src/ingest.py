@@ -35,7 +35,6 @@ def ingest_pdf():
     print("3. Conectando ao banco e gerando embeddings em lotes (para evitar Rate Limit)...")
     embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
     
-    # Inicializa a conexão com o banco e cria a coleção (limpando a anterior, se existir)
     vector_store = PGVector(
         embeddings=embeddings,
         collection_name=COLLECTION_NAME,
@@ -43,20 +42,17 @@ def ingest_pdf():
         pre_delete_collection=True
     )
     
-    # Define o tamanho do lote
+    # Define o tamanho do lote para inserção no banco
     batch_size = 10
     
-    # Loop para inserir em partes
     for i in range(0, len(splits), batch_size):
         batch = splits[i : i + batch_size]
         
-        # Insere o lote atual no banco
         vector_store.add_documents(batch)
         print(f"   -> Inseridos {min(i + batch_size, len(splits))} de {len(splits)} chunks...")
         
-        # Se ainda houver chunks para processar, pausa por 5 segundos para não estourar a cota
         if i + batch_size < len(splits):
-            time.sleep(5)
+            time.sleep(8)
             
     print("\nIngestão concluída com sucesso!")
 
